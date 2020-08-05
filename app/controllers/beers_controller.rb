@@ -1,5 +1,5 @@
 class BeersController < ApplicationController
-  before_action :set_beer, only: [:show, :edit, :update, :destroy]
+  before_action :set_beer, only: %i[show edit update destroy]
 
   # GET /beers
   # GET /beers.json
@@ -9,16 +9,19 @@ class BeersController < ApplicationController
 
   # GET /beers/1
   # GET /beers/1.json
-  def show
-  end
+  def show; end
 
   # GET /beers/new
   def new
     @beer = Beer.new
+    @breweries = Brewery.all
+    @styles = ['Weizen', 'Lager', 'Pale ale', 'IPA', 'Porter']
   end
 
   # GET /beers/1/edit
   def edit
+    @breweries = Brewery.all
+    @styles = ['Weizen', 'Lager', 'Pale ale', 'IPA', 'Porter']
   end
 
   # POST /beers
@@ -28,7 +31,8 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to @beer, notice: 'Beer was successfully created.' }
+        # format.html { redirect_to @beer, notice: 'Beer was successfully created.' }
+        format.html { redirect_to beers_path, notice: 'Beer was successfully created.' }
         format.json { render :show, status: :created, location: @beer }
       else
         format.html { render :new }
@@ -62,13 +66,14 @@ class BeersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_beer
-      @beer = Beer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def beer_params
-      params.require(:beer).permit(:name, :style, :brewery_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_beer
+    @beer = Beer.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def beer_params
+    params.require(:beer).permit(:name, :style, :brewery_id)
+  end
 end
