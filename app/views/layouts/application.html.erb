@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WadrorRatebeer</title>
+    <title>Ratebeer</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <div class="navibar">
+      <%= link_to 'breweries', breweries_path %>
+      <%= link_to 'beers', beers_path %>
+    </div>
+    
     <%= yield %>
   </body>
 </html>

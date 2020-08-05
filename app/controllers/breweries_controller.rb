@@ -1,18 +1,17 @@
 class BreweriesController < ApplicationController
-  before_action :set_brewery, only: [:show, :edit, :update, :destroy]
+  before_action :set_brewery, only: %i[show edit update destroy]
 
   # GET /breweries
   # GET /breweries.json
   def index
     @breweries = Brewery.all
 
-    #render :panimot
+    # render :panimot
   end
 
   # GET /breweries/1
   # GET /breweries/1.json
-  def show
-  end
+  def show; end
 
   # GET /breweries/new
   def new
@@ -20,8 +19,7 @@ class BreweriesController < ApplicationController
   end
 
   # GET /breweries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /breweries
   # POST /breweries.json
@@ -64,13 +62,14 @@ class BreweriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_brewery
-      @brewery = Brewery.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def brewery_params
-      params.require(:brewery).permit(:name, :year)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_brewery
+    @brewery = Brewery.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def brewery_params
+    params.require(:brewery).permit(:name, :year)
+  end
 end

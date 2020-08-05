@@ -4,8 +4,6 @@ Based on old 2018 material provided by Helsinki University (https://github.com/m
 
 Application found at https://afternoon-garden-82317.herokuapp.com/
 
-Nothing at root right now so check out /breweries and /beers paths.
-
 ### Default README
 
 This README would normally document whatever steps are necessary to get the
