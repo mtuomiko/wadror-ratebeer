@@ -7,11 +7,12 @@ class SessionsController < ApplicationController
     # Fetch corresponding user from db
     user = User.find_by username: params[:username]
 
-    # If user exists, save the user id into the session
-    session[:user_id] = user.id if user
-
-    # Redirect to personal page
-    redirect_to user
+    if user&.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to user, notice: "Welcome back!"
+    else
+      redirect_to signin_path, notice: "Username or password failure"
+    end
   end
 
   def destroy

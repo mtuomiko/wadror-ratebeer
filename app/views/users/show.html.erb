@@ -5,6 +5,16 @@
   <%= @user.username %>
 </p>
 
+<% if @user.beer_clubs.empty? %>
+  <p>Is not a member of any beer club.</p>
+<% else %>
+  <strong>Member of:</strong>
+  <ul>
+    <% @user.beer_clubs.each do |club| %>
+      <li><%= link_to club.name, club %></li>
+    <% end%>
+  </ul>
+<% end %>
 
 <% if @user.ratings.empty? %>
   <p>Has not made any ratings yet.</p>
@@ -13,11 +23,20 @@
   <strong>Ratings:</strong>
   <ul>
     <% @user.ratings.each do |rating| %>
-      <li><%= rating %> <%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li>
+        <%= rating %>
+        <% if @user == current_user %>
+          <%= link_to 'Delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </li>
     <% end%>
   </ul>
 <% end %>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<% if @user == current_user %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+  <span>|<span>
+  <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <span>|<span>
+<% end %>
 <%= link_to 'Back', users_path %>
