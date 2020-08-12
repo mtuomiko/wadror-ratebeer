@@ -60,6 +60,10 @@ group :test do
   gem 'webdrivers'
   # factory_bot (prev. factory_girl) for fixtures
   gem 'factory_bot_rails'
+  # launchy helper for Capybara testing
+  gem 'launchy'
+  # WSL support for Capybara
+  gem "capybara-wsl"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
