@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true, length: { minimum: 3, maximum: 30 }
   validates :password, length: { minimum: 4 }
-  validate :password_must_contain_upper_case
+  validate :password_must_contain_upper_case_and_number
 
   def password_must_contain_upper_case_and_number
     return if /^(?=.*[A-Z])(?=.*[0-9]).*$/ =~ password
