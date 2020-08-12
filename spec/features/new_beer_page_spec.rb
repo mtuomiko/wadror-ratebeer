@@ -15,7 +15,7 @@ describe "New beer" do
     }.to change{ Beer.count }.from(0).to(1)
   end
 
-  it 'is not created and error is displayed when unvalid name is given on new beer page' do
+  it 'is not created and error is displayed when empty name is given on new beer page' do
     visit new_beer_path
 
     click_button 'Create Beer'
