@@ -6,11 +6,11 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
-# Use sqlite3 as the database for Active Record
-# Original: gem 'sqlite3', '~> 1.4'
-
+# Use sqlite3 as the database for Active Record except use PostgreSQL for production (Heroku) 
+# Use RSpec for testing
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :production do

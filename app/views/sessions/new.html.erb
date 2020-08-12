@@ -4,10 +4,10 @@
 
 <%= form_with url: session_path do %>
   <div>
-    username <%= text_field_tag :username, params[:username] %>
+    Username <%= text_field_tag :username, params[:username] %>
   </div>
   <div>
-    password <%= password_field_tag :password, params[:password] %>
+    Password <%= password_field_tag :password, params[:password] %>
   </div>
   <%= submit_tag "Log in" %>
 <% end %>

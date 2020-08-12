@@ -12,9 +12,9 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 4 }
   validate :password_must_contain_upper_case
 
-  def password_must_contain_upper_case
-    return if /[A-Z]/ =~ password
+  def password_must_contain_upper_case_and_number
+    return if /^(?=.*[A-Z])(?=.*[0-9]).*$/ =~ password
 
-    errors.add(:password, 'must contain at least one upper case letter')
+    errors.add(:password, 'must contain at least one upper case letter and one number')
   end
 end
