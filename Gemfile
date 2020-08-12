@@ -6,13 +6,7 @@ ruby '2.7.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
-# Use sqlite3 as the database for Active Record except use PostgreSQL for production (Heroku) 
-# Use RSpec for testing
-group :development, :test do
-  gem 'sqlite3', '~> 1.4'
-  gem 'rspec-rails', '~> 3.8'
-end
-
+# Use PostgreSQL for production (Heroku) 
 group :production do
    gem 'pg'
    gem 'rails_12factor'
@@ -43,6 +37,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
+  # Use sqlite3 as the development database for Active Record
+  # Use RSpec for testing
+  gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -60,6 +58,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # factory_bot (prev. factory_girl) for fixtures
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
