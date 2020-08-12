@@ -2,6 +2,7 @@ inherit_from:
 - https://relaxed.ruby.style/rubocop.yml
 
 AllCops:
+  NewCops: enable
   Exclude:
     - __test/**
     - test/**/*
