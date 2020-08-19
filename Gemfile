@@ -64,6 +64,8 @@ group :test do
   gem 'launchy'
   # WSL support for Capybara
   gem "capybara-wsl"
+  # Test coverage
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

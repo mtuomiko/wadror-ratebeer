@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start('rails')
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -63,3 +65,12 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+# Add chrome driver
+Capybara.register_driver :windows_chrome do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+  puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
+  Capybara::Selenium::Driver.new(app, browser: :chrome, url: 'http://192.168.1.189:9515',
+                                      desired_capabilities: capabilities)
+end
+Capybara.default_max_wait_time = 5
