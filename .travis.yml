@@ -4,6 +4,7 @@ rvm:
 - 2.7.1
 
 script:
+- nvm install --lts
 - nvm use --lts
 - node -v
 - bundle exec rails db:migrate
