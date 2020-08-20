@@ -3,10 +3,13 @@ language: ruby
 rvm:
 - 2.7.1
 
+addons:
+  chrome: stable
+
 script:
-- nvm install --lts
-- nvm use --lts
-- node -v
-- bundle exec rails db:migrate
-- bundle exec rails assets:precompile
-- bundle exec rspec -fd spec
+  - nvm install --lts
+  - nvm use --lts
+  - node -v
+  - bundle exec rails db:migrate
+  - bundle exec rails assets:precompile
+  - bundle exec rspec -fd spec

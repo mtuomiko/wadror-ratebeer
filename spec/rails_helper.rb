@@ -66,11 +66,22 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-# Add chrome driver
-Capybara.register_driver :windows_chrome do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
-  puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
-  Capybara::Selenium::Driver.new(app, browser: :chrome, url: 'http://192.168.1.189:9515',
-                                      desired_capabilities: capabilities)
+# Add WebDrivers for local and Travis CI
+if ENV['TRAVIS'] == 'true'
+  Capybara.register_driver :headless_chrome do |app|
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+
+  Capybara.javascript_driver = :headless_chrome
+else
+  Capybara.register_driver :windows_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+    puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
+    Capybara::Selenium::Driver.new(app, browser: :chrome, url: 'http://192.168.1.189:9515',
+                                        desired_capabilities: capabilities)
+  end
+  Capybara.default_max_wait_time = 5
+  Capybara.javascript_driver = :windows_chrome
 end
-Capybara.default_max_wait_time = 5
