@@ -66,7 +66,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-# Add WebDrivers for local and Travis CI
+# Add JavaScript WebDrivers for local and Travis CI
+# Local tests in WSL environment use a Windows Chromedriver
 if ENV['TRAVIS'] == 'true'
   Capybara.register_driver :headless_chrome do |app|
     options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
