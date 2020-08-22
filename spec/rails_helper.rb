@@ -13,11 +13,7 @@ require 'rspec/rails'
 
 require 'helpers'
 require 'webmock/rspec'
-# Allow connections for local testing in WSL environment with Chromedriver
-# connection (Selenium)
-if ENV['TRAVIS'].nil? || ENV['TRAVIS'] == 'false'
- 
-end
+
 # Allow connections when testing. On local machine allow Selenium to connect to
 # WSL host machine with Chromedriver. On Travis allow local connections and
 # access to Chromedriver website.

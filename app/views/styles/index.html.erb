@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<h1>List of styles</h1>
+
+<p>Number of styles: <%= @styles.length %></p>
+
+<ul>
+ <% @styles.each do |style| %>
+   <li><%= link_to style.name, style %></li>
+ <% end %>
+</ul>
+
+<%= link_to 'New Style', new_style_path if current_user %><br>

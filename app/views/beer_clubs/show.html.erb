@@ -20,6 +20,21 @@
 </div>
 
 <% if current_user %>
+  <% if current_user.memberships.exists?(beer_club: @beer_club) %>
+    <%= form_with(model: @membership, local: true, method: :delete) do |form| %>
+      <%= form.hidden_field :beer_club_id %>
+      <%= form.submit value: 'End the membership' %>
+      <%= %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: @membership, local: true) do |form| %>
+      <%= form.hidden_field :beer_club_id %> 
+      <%= form.submit value: 'Join the club'%>
+    <% end %>
+    
+  <% end %>
+  
+  <br>
   <%= link_to 'Edit', edit_beer_club_path(@beer_club) %><br>
   <%= link_to 'Destroy', @beer_club, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %>

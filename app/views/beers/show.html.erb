@@ -7,12 +7,12 @@
 
 <p>
   <strong>Style:</strong>
-  <%= @beer.style %>
+  <%= link_to @beer.style.name, @beer.style %>
 </p>
 
 <p>
   <strong>Brewery:</strong>
-  <%= @beer.brewery.name %>
+  <%= link_to @beer.brewery.name, @beer.brewery %>
 </p>
 
 <p>
@@ -24,6 +24,17 @@
 </p>
 
 <% if current_user %>
+  <h4>Give a rating:</h4>
+
+  <%= form_with(model: @rating, local: true) do |form| %>
+    <%= form.hidden_field :beer_id %> 
+    <div class="field">
+      Score: <%= form.number_field :score %>
+    </div>
+    <%= form.submit %>
+  <% end %>
+
+  <br>
   <%= link_to 'Edit', edit_beer_path(@beer) %><br>
   <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %>

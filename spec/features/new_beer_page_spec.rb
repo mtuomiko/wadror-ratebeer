@@ -4,6 +4,7 @@ describe "New beer" do
   include Helpers
 
   let!(:brewery) { FactoryBot.create :brewery, name: 'TestBrew' }
+  let!(:style) { FactoryBot.create :style }
   let!(:user) { FactoryBot.create :user }
 
   before :each do

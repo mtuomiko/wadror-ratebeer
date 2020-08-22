@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :beers
   resources :breweries
+  resources :styles
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # get 'ratings', to: 'ratings#index'
@@ -19,9 +20,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   root 'breweries#index'
-  # get '/kaikki_bisset', to: 'beers#index'
 
   resources :places, only: [:index, :show]
-  # get 'places', to: 'places#index'
   post 'places', to: 'places#search'
 end

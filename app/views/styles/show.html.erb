@@ -1,0 +1,19 @@
+<h1><%= @style.name %></h1>
+
+<p>Description: <%= @style.description %></p>
+
+<% if @style.beers.empty? %>
+  <strong>No beers of this style listed</strong>
+<% else %>
+  <strong>Beers</strong>
+  <ul>
+    <% @style.beers.each do |beer| %>
+      <li><%= link_to beer.name, beer %> by <%= link_to beer.brewery.name, beer.brewery %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if current_user %>
+  <br><%= link_to 'Edit', edit_style_path(@style) %><br>
+  <%= link_to 'Destroy', @style, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>

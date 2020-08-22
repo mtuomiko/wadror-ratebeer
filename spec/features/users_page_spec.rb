@@ -38,6 +38,7 @@ describe 'User' do
     let!(:user2) { FactoryBot.create :user, username: 'user2', password: 'SecretPass1', password_confirmation: 'SecretPass1' }
     let!(:user3) { FactoryBot.create :user, username: 'user3', password: 'SecretPass2', password_confirmation: 'SecretPass2' }
     let!(:brewery1) { FactoryBot.create :brewery, name: 'Koff' }
+    let!(:style) { FactoryBot.create :style }
     let!(:beer1) { FactoryBot.create :beer, name: 'Bisse', brewery: brewery1 }
     let!(:rating1) { FactoryBot.create :rating, beer: beer1, score: 22, user: user2 }
     let!(:rating2) { FactoryBot.create :rating, beer: beer1, score: 33, user: user2 }
