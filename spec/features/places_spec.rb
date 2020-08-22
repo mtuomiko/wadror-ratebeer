@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe 'Places' do
+  before :each do
+    canned_answer = <<~END_OF_STRING
+      {"success":false,"error":{"code":615,"type":"request_failed","info":"Your API request failed. Please try again or contact support."}}
+    END_OF_STRING
+
+    stub_request(:get, /.*weatherstack.com*/).to_return(body: canned_answer, headers: { 'Content-Type' => 'application/json' })
+  end
+
   it 'if one is returned by the API, it is shown at the page' do
     allow(BeermappingApi).to receive(:places_in).with('kumpula').and_return(
       [Place.new(name: 'Oljenkorsi', id: 1)]
