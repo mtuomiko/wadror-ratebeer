@@ -12,6 +12,12 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'helpers'
+require 'webmock/rspec'
+# Allow connections for local testing in WSL environment with Chromedriver
+# connection (Selenium)
+if ENV['TRAVIS'].nil? || ENV['TRAVIS'] == 'false'
+  WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['SELENIUM_HOST'])
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -80,7 +86,8 @@ else
   Capybara.register_driver :windows_chrome do |app|
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
     puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
-    Capybara::Selenium::Driver.new(app, browser: :chrome, url: 'http://192.168.1.189:9515',
+    url = "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}"
+    Capybara::Selenium::Driver.new(app, browser: :chrome, url: url,
                                         desired_capabilities: capabilities)
   end
   Capybara.default_max_wait_time = 5

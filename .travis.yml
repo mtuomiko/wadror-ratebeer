@@ -12,7 +12,9 @@ deploy:
 script:
 - nvm install --lts
 - nvm use --lts
-- node -v
 - bundle exec rails db:migrate
 - bundle exec rails assets:precompile
 - bundle exec rspec -fd spec
+env:
+  global:
+    secure: khJGmgvdD4gCuFNzSABkW9gcAwsAjt/yJtK4PpXBv8VC/mvUzAVtNnPxP4AjB2zFOR9GieBEozAQyB9e70K2n5+99/PQws76lWUZ+aiGyaICmBPnxdd9ia/FLq9bP9SW1UDxns7aZD7+XiO2fhAog3ND9ZgOYdPfj0FzqEM0KsoERIYbiljhja945lr/c3HXsd5uuHhbb15P0bAiP3L3/SSD0p1GmvKsY5b0sFvDVuISz/0WT/I/sYUowFIztaICLp+bktr/o5W4smp5A1j/JU/1qBpqV+sXetU7s6M5htNGmxvzxIGHGKobStAhWqlh5CN30EWpLRD/5xYL7+Dj8xx4Mp8O5rjohLfGTK8xMIvAZMoiotwH8LHBhnEW21pnxovy7sMpqEv0QAt0vUuro1/b4BKt4E00CO1/melFWlJzxhU9zbqfSEqG+zBtkgFglef2j5Y08VBby7N+1PT39tB2i8cQ5089fPKrBD0tvPXZuEG8zzaC/T7SbJu3Kpw1tpeaSP+F8b250rMdlr6K1Lectt1/yXNR6A9mMSmcAml3va9wbjxzjLykzgwUcv4Bdd+RYjTIqlGms2w4j1LcqRH+OPdcWQtPjQJE9Ezapz9YBgPsfSqKDJ/FrEgDXWDTBqJaJkwm6oujusZlqkMyeCa34W32a4L+wL1NNsCrNe0=

@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'httparty'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,6 +43,8 @@ group :development, :test do
   # Use RSpec for testing
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 3.8'
+  # For loading API keys. Production environment gets these from somewhere else.
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -66,6 +70,8 @@ group :test do
   gem "capybara-wsl"
   # Test coverage
   gem 'simplecov', require: false
+  # Webmock for testing external APIs
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

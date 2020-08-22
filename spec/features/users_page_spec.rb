@@ -51,7 +51,6 @@ describe 'User' do
     end
 
     it 'ratings no longer contain rating after user clicks delete link', js: true do
-      # Capybara.current_driver = :windows_chrome
       sign_in(username: 'user2', password: 'SecretPass1')
 
       accept_confirm do
@@ -60,7 +59,6 @@ describe 'User' do
 
       expect(page).to have_content 'Bisse 22'
       expect(page).not_to have_content 'Bisse 33'
-      # Capybara.use_default_driver
     end
 
     it 'displays favorite beer style and brewery' do
