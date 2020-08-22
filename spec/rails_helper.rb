@@ -16,11 +16,15 @@ require 'webmock/rspec'
 # Allow connections for local testing in WSL environment with Chromedriver
 # connection (Selenium)
 if ENV['TRAVIS'].nil? || ENV['TRAVIS'] == 'false'
-  WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['SELENIUM_HOST'])
+ 
 end
+# Allow connections when testing. On local machine allow Selenium to connect to
+# WSL host machine with Chromedriver. On Travis allow local connections and
+# access to Chromedriver website.
 if ENV['TRAVIS'] == 'true'
-  # Allow googleapis.com for Selenium Chromedriver access
-  WebMock.disable_net_connect!(allow_localhost: true, allow: 'googleapis.com')
+  WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
+else
+  WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['SELENIUM_HOST'])
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
