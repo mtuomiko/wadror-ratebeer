@@ -17,8 +17,10 @@ require 'webmock/rspec'
 # connection (Selenium)
 if ENV['TRAVIS'].nil? || ENV['TRAVIS'] == 'false'
   WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['SELENIUM_HOST'])
-else
-  WebMock.disable_net_connect!(allow_localhost: true)
+end
+if ENV['TRAVIS'] == 'true'
+  # Allow googleapis.com for Selenium Chromedriver access
+  WebMock.disable_net_connect!(allow_localhost: true, allow: 'googleapis.com')
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
