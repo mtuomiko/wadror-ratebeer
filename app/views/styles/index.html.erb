@@ -2,9 +2,9 @@
 
 <p>Number of styles: <%= @styles.length %></p>
 
-<ul>
+<ul class="list-group mb-2">
  <% @styles.each do |style| %>
-   <li><%= link_to style.name, style %></li>
+   <%= link_to style.name, style, class: 'list-group-item list-group-item-action text-primary' %>
  <% end %>
 </ul>
 

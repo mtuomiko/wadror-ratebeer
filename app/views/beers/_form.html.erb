@@ -19,14 +19,14 @@
   </div>
 
   <div class="form-group row">
-    <%= form.label :style_id, 'Style', class: 'col-md-2 col-form-label' %>
+    <%= form.label :style_id, class: 'col-md-2 col-form-label' %>
     <div class="col-md-10">
       <%= form.collection_select :style_id, @styles, :id, :name, {}, { class: 'form-control' } %>
     </div>
   </div>
 
   <div class="form-group row">
-    <%= form.label :brewery_id, 'Brewery', class: 'col-md-2 col-form-label' %>
+    <%= form.label :brewery_id, class: 'col-md-2 col-form-label' %>
     <div class="col-md-10">
       <%= form.collection_select :brewery_id, @breweries, :id, :name, {}, { class: 'form-control' } %>
     </div>

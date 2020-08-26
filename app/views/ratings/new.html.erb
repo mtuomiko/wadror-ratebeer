@@ -1,6 +1,6 @@
 <h2>Create new rating</h2>
 
-<%= form_with model: @rating, local: true do |f| %>
+<%= form_with model: @rating, local: true do |form| %>
   <% if @rating.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@rating.errors.count, "error") %> prohibited rating from being saved:</h2>
@@ -13,8 +13,23 @@
     </div>
   <% end %>
 
-  <%= f.collection_select :beer_id, @beers, :id, :itself %>
+  <div class="form-group row">
+    <%= form.label :beer_id, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.collection_select :beer_id, @beers, :id, :itself, {}, { class: 'form-control' } %>
+    </div>
+  </div>
 
-  Score: <%= f.number_field :score %>
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class="form-group row">
+    <%= form.label :score, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.number_field :score, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>

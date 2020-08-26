@@ -12,23 +12,31 @@
   <% end %>
 
   <% if user.new_record? %>
-    <div class="field">
-      <%= form.label :username %>
-      <%= form.text_field :username %>
+    <div class="form-group row">
+      <%= form.label :username, class: 'col-md-4 col-form-label' %>
+      <div class="col-md">
+        <%= form.text_field :username, class: 'form-control' %>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
+  <div class="form-group row">
+    <%= form.label :password, class: 'col-md-4 col-form-label' %>
+    <div class="col-md">
+      <%= form.password_field :password, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+  <div class="form-group row">
+    <%= form.label :password_confirmation, class: 'col-md-4 col-form-label' %>
+    <div class="col-md">
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
+  <div class="form-group row">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

@@ -3,7 +3,7 @@ module Helpers
     visit signin_path
     fill_in('username', with: credentials[:username])
     fill_in('password', with: credentials[:password])
-    click_button('Log in')
+    click_button('Signin')
   end
 
   # object must contain user and can contain either style or brewery

@@ -25,17 +25,27 @@
 
 <% if current_user %>
   <div>
-    <h4>Give a rating:</h4>
+    <h4>Give a rating</h4>
 
     <%= form_with(model: @rating, local: true) do |form| %>
       <%= form.hidden_field :beer_id %> 
-      <div class="field">
-        Score: <%= form.number_field :score %>
+      <div class="form-group row">
+        <%= form.label :score, class: 'col-md-2 col-form-label' %>
+
+        <div class="col-md-4">
+          <%= form.number_field :score, class: 'form-control' %>
+        </div>
       </div>
-      <%= form.submit class: 'btn btn-primary' %>
+      <div class="form-group row">
+        <div class="col">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+      </div>
     <% end %>
   </div>
 
-  <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div>
+    <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-primary' %>
+    <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
 <% end %>

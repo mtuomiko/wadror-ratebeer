@@ -1,8 +1,17 @@
 <h1>Beer places search</h1>
 
-<%= form_tag places_path do %>
-  City <%= text_field_tag :city, params[:city] %>
-  <%= submit_tag "Search" %>
+<%= form_with url: places_path, local: true do |form| %>
+  <div class="form-group row">
+    <%= form.label :city, class: 'col-md-2 col-form-label' %>
+    <div class="col-md">
+      <%= text_field_tag :city, params[:city], class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col">
+      <%= submit_tag "Search", class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
 
 <% if @weather %>

@@ -7,9 +7,9 @@
 <div>
   <strong>Members</strong>
   <% if @beer_club.users %>
-    <ul>
+    <ul class="list-group">
       <% @beer_club.users.each do |user| %>
-        <li><%= link_to user.username, user %></li>
+        <%= link_to user.username, user, class: 'list-group-item list-group-item-action text-primary' %>
       <% end %>
     </ul>
   <% else %>

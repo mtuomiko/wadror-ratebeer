@@ -10,6 +10,8 @@ class WeatherstackApi
     # Other data would contain coordinates etc.
     weather = response['current']
     weather['name'] = response['location']['name']
+    # Convert wind speed from km/h to m/s
+    weather['wind_speed'] = (weather['wind_speed'].to_d / 3.6).round(1)
     weather
   end
 

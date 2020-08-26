@@ -13,13 +13,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.collection_select :beer_club_id, @beer_clubs, :id, :name %>
+  <div class="form-group row">
+    <%= form.label :beer_club_id, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.collection_select :beer_club_id, @beer_clubs, :id, :name, {}, { class: 'form-control' } %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
-
-<%= link_to 'Back', memberships_path %>

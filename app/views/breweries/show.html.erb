@@ -4,17 +4,17 @@
 
 <p>Number of beers: <%= @brewery.beers.count %></p>
 
-<p>
+<ul class="list-group">
  <% @brewery.beers.each do |beer| %>
-   <%= link_to beer.name, beer_path(beer.id) %>
+   <%= link_to beer.name, beer_path(beer.id), class: 'list-group-item list-group-item-action text-primary' %>
  <% end %>
-</p>
+</ul>
 
-<p>
+<div class="mt-2 mb-2">
   <% unless @brewery.ratings.empty? %>
     <%= "Has #{pluralize(@brewery.ratings.count, 'rating')}, average #{@brewery.average_rating}" %>
   <% end %>
-</p>
+</div>
 
 <% if current_user %>
   <%= link_to 'Edit', edit_brewery_path(@brewery), class: 'btn btn-primary' %>
