@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h2><%= @brewery.name %></h2>
 
 <p style="font-style: italic">Established in <%= @brewery.year %></p>
@@ -19,6 +17,6 @@
 </p>
 
 <% if current_user %>
-  <%= link_to 'Edit', edit_brewery_path(@brewery) %><br>
-  <%= link_to 'Destroy', @brewery, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to 'Edit', edit_brewery_path(@brewery), class: 'btn btn-primary' %>
+  <%= link_to 'Destroy', @brewery, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>

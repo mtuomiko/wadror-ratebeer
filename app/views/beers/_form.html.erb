@@ -11,20 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.collection_select :style_id, @styles, :id, :name %>
+  <div class="form-group row">
+    <%= form.label :style_id, 'Style', class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.collection_select :style_id, @styles, :id, :name, {}, { class: 'form-control' } %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.collection_select :brewery_id, @breweries, :id, :name %>
+  <div class="form-group row">
+    <%= form.label :brewery_id, 'Brewery', class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.collection_select :brewery_id, @breweries, :id, :name, {}, { class: 'form-control' } %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row">
+    <%= form.label :name, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :year %>
-    <%= form.number_field :year %>
+  <div class="form-group row">
+    <%= form.label :year, class: 'col-md-2 col-form-label' %>
+    <div class="col-md-10">
+      <%= form.number_field :year, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="col">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

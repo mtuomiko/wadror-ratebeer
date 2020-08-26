@@ -1,40 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <p>
+    <strong>Name:</strong>
+    <%= @beer.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @beer.name %>
-</p>
+  <p>
+    <strong>Style:</strong>
+    <%= link_to @beer.style.name, @beer.style %>
+  </p>
 
-<p>
-  <strong>Style:</strong>
-  <%= link_to @beer.style.name, @beer.style %>
-</p>
+  <p>
+    <strong>Brewery:</strong>
+    <%= link_to @beer.brewery.name, @beer.brewery %>
+  </p>
 
-<p>
-  <strong>Brewery:</strong>
-  <%= link_to @beer.brewery.name, @beer.brewery %>
-</p>
-
-<p>
-  <% if @beer.ratings.empty? %>
-    This beer has not yet been rated!
-  <% else %>
-    <%= "Has #{pluralize(@beer.ratings.count, 'rating')}, average #{@beer.average_rating}" %>
-  <% end %>
-</p>
+  <p>
+    <% if @beer.ratings.empty? %>
+      This beer has not yet been rated!
+    <% else %>
+      <%= "Has #{pluralize(@beer.ratings.count, 'rating')}, average #{@beer.average_rating}" %>
+    <% end %>
+  </p>
+</div>
 
 <% if current_user %>
-  <h4>Give a rating:</h4>
+  <div>
+    <h4>Give a rating:</h4>
 
-  <%= form_with(model: @rating, local: true) do |form| %>
-    <%= form.hidden_field :beer_id %> 
-    <div class="field">
-      Score: <%= form.number_field :score %>
-    </div>
-    <%= form.submit %>
-  <% end %>
+    <%= form_with(model: @rating, local: true) do |form| %>
+      <%= form.hidden_field :beer_id %> 
+      <div class="field">
+        Score: <%= form.number_field :score %>
+      </div>
+      <%= form.submit class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 
-  <br>
-  <%= link_to 'Edit', edit_beer_path(@beer) %><br>
-  <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-primary' %>
+  <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 <% end %>

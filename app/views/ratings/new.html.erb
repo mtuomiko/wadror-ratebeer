@@ -16,5 +16,5 @@
   <%= f.collection_select :beer_id, @beers, :id, :itself %>
 
   Score: <%= f.number_field :score %>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
