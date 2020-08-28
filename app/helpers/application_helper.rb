@@ -10,6 +10,8 @@ module ApplicationHelper
   end
 
   def round_num(number)
+    return nil unless number
+
     number.round(1)
   end
 end
