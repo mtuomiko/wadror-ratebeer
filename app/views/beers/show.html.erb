@@ -18,7 +18,7 @@
     <% if @beer.ratings.empty? %>
       This beer has not yet been rated!
     <% else %>
-      <%= "Has #{pluralize(@beer.ratings.count, 'rating')}, average #{@beer.average_rating}" %>
+      <%= "Has #{pluralize(@beer.ratings.count, 'rating')}, average #{round_num @beer.average_rating}" %>
     <% end %>
   </p>
 </div>
@@ -45,7 +45,6 @@
   </div>
 
   <div>
-    <%= link_to 'Edit', edit_beer_path(@beer), class: 'btn btn-primary' %>
-    <%= link_to 'Destroy', @beer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <%= edit_and_destroy_buttons(@beer) %>
   </div>
 <% end %>

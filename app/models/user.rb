@@ -51,4 +51,9 @@ class User < ApplicationRecord
     total = array.inject(0) { |sum, e| sum + e }
     total / array.length.to_f
   end
+
+  def self.top(num)
+    sorted_by_rating_count_desc = User.all.sort_by{ |u| -(u.ratings.count || 0) }
+    sorted_by_rating_count_desc[0..(num - 1)]
+  end
 end

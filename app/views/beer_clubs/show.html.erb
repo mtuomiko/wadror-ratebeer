@@ -18,20 +18,20 @@
 </div>
 
 <% if current_user %>
-  <% if current_user.memberships.exists?(beer_club: @beer_club) %>
-    <%= form_with(model: @membership, local: true, method: :delete) do |form| %>
-      <%= form.hidden_field :beer_club_id %>
-      <%= form.submit class: 'btn btn-danger', value: 'End the membership' %>
-      <%= %>
+  <div class="my-2">
+    <% if current_user.memberships.exists?(beer_club: @beer_club) %>
+      <%= form_with(model: @membership, local: true, method: :delete) do |form| %>
+        <%= form.hidden_field :beer_club_id %>
+        <%= form.submit class: 'btn btn-danger', value: 'End the membership' %>
+        <%= %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: @membership, local: true) do |form| %>
+        <%= form.hidden_field :beer_club_id %> 
+        <%= form.submit class: 'btn btn-primary', value: 'Join the club' %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= form_with(model: @membership, local: true) do |form| %>
-      <%= form.hidden_field :beer_club_id %> 
-      <%= form.submit class: 'btn btn-primary', value: 'Join the club' %>
-    <% end %>
-    
-  <% end %>
-  
-  <%= link_to 'Edit', edit_beer_club_path(@beer_club), class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', @beer_club, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+
+  <%= edit_and_destroy_buttons(@beer_club) %>
 <% end %>

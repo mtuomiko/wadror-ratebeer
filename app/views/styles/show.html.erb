@@ -1,6 +1,14 @@
 <h1><%= @style.name %></h1>
 
-<p>Description: <%= @style.description %></p>
+<p><strong>Description:</strong> <%= @style.description %></p>
+
+<p>
+  <% if @style.ratings.empty? %>
+    No ratings for this beer style.
+  <% else %>
+    <%= "Has #{pluralize(@style.ratings.count, 'rating')}, average #{round_num @style.average_rating}" %>
+  <% end %>
+</p>
 
 <% if @style.beers.empty? %>
   <strong>No beers of this style listed</strong>
@@ -14,6 +22,5 @@
 <% end %>
 
 <% if current_user %>
-  <%= link_to 'Edit', edit_style_path(@style), class: 'btn btn-primary' %>
-  <%= link_to 'Destroy', @style, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <%= edit_and_destroy_buttons(@style) %>
 <% end %>

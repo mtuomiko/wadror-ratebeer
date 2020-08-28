@@ -1,23 +1,31 @@
-<h1>List of ratings</h1>
+<h1>Ratings</h1>
 
-<p>Number of ratings: <%= @ratings.length %></p>
+<div class="row">
+  <div class="col-md-4">
+    <h4>Best breweries</h4>
+    <%= render 'avg_table', items: @top_breweries %>
+  </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Beer</th>
-      <th>Rating</th>
-      <th>User</th>
-    </tr>
-  </thead>
+  <div class="col-md-4">
+    <h4>Best beers</h4>
+    <%= render 'avg_table', items: @top_beers %>
+  </div>
 
-  <tbody>
-    <% @ratings.each do |rating| %>
-      <tr>
-        <td><%= link_to rating.beer.name, beer_path(rating.beer.id) %></td>
-        <td><%= rating.score %></td>
-        <td><%= link_to rating.user.username, rating.user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="col-md-4">
+    <h4>Best styles</h4>
+    <%= render 'avg_table', items: @top_styles %>
+  </div>
+</div>
+
+<h4>Most active users</h4>
+<%= render 'user_table', items: @top_users %>
+
+<h4>Recent ratings</h4>
+
+<ul class="list-group mb-2">
+ <% @ratings.recent.each do |r| %>
+   <li class="list-group-item list-group-item-action">
+    <%= r.beer.name %> by <%= link_to r.user.username, r.user %> at <%= r.created_at %>
+   </li>
+ <% end %>
+</ul>

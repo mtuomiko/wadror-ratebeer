@@ -1,0 +1,17 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Ratings</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% items.each do |item| %>
+      <tr>
+        <td><%= link_to item.username, item %></td>
+        <td><%= item.ratings.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
