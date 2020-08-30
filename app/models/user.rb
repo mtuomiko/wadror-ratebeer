@@ -26,30 +26,26 @@ class User < ApplicationRecord
   end
 
   def favorite_style
-    return nil if ratings.empty?
-
-    scores_and_styles = ratings.map { |r| { score: r.score, style: r.beer.style } }
-    grouped_by_style = scores_and_styles.group_by { |i| i[:style] }
-    trimmed = grouped_by_style.transform_values { |v| v.map { |inner_hash| inner_hash[:score] } }
-    averages = trimmed.transform_values { |v| array_average(v) }
-    # max_by of hash returns array so we access the style name from the first element
-    averages.max_by { |_k, v| v }[0]
+    favorite(:style)
   end
 
   def favorite_brewery
-    return nil if ratings.empty?
-
-    scores_and_breweries = ratings.map { |r| { score: r.score, brewery: r.beer.brewery } }
-    grouped_by_brewery = scores_and_breweries.group_by { |i| i[:brewery] }
-    trimmed = grouped_by_brewery.transform_values { |v| v.map { |inner_hash| inner_hash[:score] } }
-    averages = trimmed.transform_values { |b| array_average(b) }
-    # max_by of hash returns array so we access the style name from the first element
-    averages.max_by { |_k, v| v }[0]
+    favorite(:brewery)
   end
 
-  def array_average(array)
-    total = array.inject(0) { |sum, e| sum + e }
-    total / array.length.to_f
+  def favorite(grouped_by)
+    return nil if ratings.empty?
+
+    grouped_ratings = ratings.group_by { |r| r.beer.send(grouped_by) }
+    averages = grouped_ratings.map do |group, ratings|
+      { group: group, score: average_of(ratings) }
+    end
+
+    averages.max_by { |r| r[:score] }[:group]
+  end
+
+  def average_of(ratings)
+    ratings.sum(&:score).to_f / ratings.count
   end
 
   def self.top(num)
