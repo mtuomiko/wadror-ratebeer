@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:toggle_closed]
 
   # GET /users
   # GET /users.json
@@ -65,6 +66,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def toggle_closed
+    user = User.find(params[:id])
+    user.update_attribute :closed, !user.closed
+
+    new_status = user.closed? ? 'closed' : 'open'
+
+    redirect_to user, notice: "User status changed to #{new_status}"
   end
 
   private

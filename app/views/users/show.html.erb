@@ -4,12 +4,23 @@
   <% if @user.admin  %>
     <span class="badge badge-info">Admin</span>
   <% end %>
+  <% if @user.closed %>
+    <span class="badge badge-danger">Closed</span>
+  <% end %>
 </p>
+
+<% if current_user&.admin && current_user != @user %>
+  <% if @user.closed %>
+    <%= link_to 'Open account', toggle_closed_user_path(@user.id), method: :post, class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to 'Close account', toggle_closed_user_path(@user.id), method: :post, class: 'btn btn-danger' %>
+  <% end %>
+<% end %>
 
 <% if @user.beer_clubs.empty? %>
   <p>Is not a member of any beer club.</p>
 <% else %>
-  <strong>Member of:</strong>
+  <p><strong>Member of:</strong></p>
   <ul>
     <% @user.beer_clubs.each do |club| %>
       <li><%= link_to club.name, club %></li>
