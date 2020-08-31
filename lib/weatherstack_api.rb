@@ -16,8 +16,7 @@ class WeatherstackApi
   end
 
   def self.key
-    raise 'WEATHERSTACK_APIKEY env variable not defined' if ENV['WEATHERSTACK_APIKEY'].nil?
-
-    ENV['WEATHERSTACK_APIKEY']
+    # Raises KeyError if key not found
+    Rails.application.credentials.weatherstack_apikey!
   end
 end

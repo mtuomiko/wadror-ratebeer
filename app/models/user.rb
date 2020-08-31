@@ -21,7 +21,6 @@ class User < ApplicationRecord
   def favorite_beer
     return nil if ratings.empty?
 
-    # ratings.max_by(&:score).beer
     ratings.order(score: :desc).limit(1).first.beer
   end
 

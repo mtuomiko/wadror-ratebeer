@@ -20,7 +20,7 @@ require 'webmock/rspec'
 if ENV['TRAVIS'] == 'true'
   WebMock.disable_net_connect!(allow_localhost: true, allow: 'chromedriver.storage.googleapis.com')
 else
-  WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['SELENIUM_HOST'])
+  WebMock.disable_net_connect!(allow_localhost: true, allow: ENV['WSL_SELENIUM_HOST'])
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -90,7 +90,7 @@ else
   Capybara.register_driver :windows_chrome do |app|
     capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
     puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
-    url = "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}"
+    url = "http://#{ENV['WSL_SELENIUM_HOST']}:#{ENV['WSL_SELENIUM_PORT']}"
     Capybara::Selenium::Driver.new(app, browser: :chrome, url: url,
                                         desired_capabilities: capabilities)
   end
