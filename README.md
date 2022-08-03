@@ -16,4 +16,4 @@ Application found at https://afternoon-garden-82317.herokuapp.com/. Hosted using
     * `WSL_SELENIUM_HOST`=local ip or host that points to the Windows
     * `WSL_SELENIUM_PORT`=9515 (default Chromedriver port)
 * `rubocop` linting
-* `rails server` ru
+* `rails server` run
