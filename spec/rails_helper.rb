@@ -88,11 +88,10 @@ if ENV['TRAVIS'] == 'true'
   Capybara.javascript_driver = :headless_chrome
 else
   Capybara.register_driver :windows_chrome do |app|
-    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome
+    options = Selenium::WebDriver::Options::chrome
     puts 'Current driver (windows_chrome) requires chromedriver to be launched from Windows'
     url = "http://#{ENV['WSL_SELENIUM_HOST']}:#{ENV['WSL_SELENIUM_PORT']}"
-    Capybara::Selenium::Driver.new(app, browser: :chrome, url: url,
-                                        desired_capabilities: capabilities)
+    Capybara::Selenium::Driver.new(app, browser: :chrome, url: url, capabilities: options)
   end
   Capybara.default_max_wait_time = 5
   Capybara.javascript_driver = :windows_chrome
