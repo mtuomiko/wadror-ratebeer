@@ -3,6 +3,8 @@ rvm:
 - 2.7.1
 addons:
   chrome: stable
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.10.0
 deploy:
   provider: heroku
   app: afternoon-garden-82317

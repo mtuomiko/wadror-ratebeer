@@ -51,10 +51,6 @@ describe 'User' do
       expect(page).not_to have_content 'Bisse 44'
     end
 
-    # I was unable to make this javascript enabled test work (again, it used to previously, not sure what broke it) 
-    # with a headless browser. Something causes a timeout when JS enabled browser is writing anything (fill_in, set) 
-    # to any form input fields. Headless needed for CI/CD pipelines, local "real" browser works just fine.
-    # 
     it 'ratings no longer contain rating after user clicks delete link', js: true do
       sign_in(username: 'user2', password: 'SecretPass1')
 
