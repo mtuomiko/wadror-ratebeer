@@ -4,13 +4,13 @@ rvm:
 addons:
   chrome: stable
 before_deploy:
-  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.10.0
+- rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install faraday -v 1.10.0
 deploy:
   provider: heroku
   app: afternoon-garden-82317
   run: rails db:migrate
   api_key:
-    secure: pWY7FvIqI6W2rea5uMEy2Q30w+GR95eUVziqAVsuELYTmO6Doubc56lcVr77Rd1LY0Bf4bLUOHvIWmWPdjvC6WS8hYgZSIo4t9Ssnv6Mb2fAgAg3mFUyIXoENSOxuOFzJCGvcX7VI6j26T40K2PEP8wWn6n0ulsYAbt+U1VXY92QxoE7mmrMT4EDTioxuyNCbRsJEiaHhyBPEF3Od+GiPLVRhGZLjriFdehlYqhv+qijMOxI2EohBYGBiy9s9bajs5W4pW8UfpFS6oSpBaCaJeTdDHLT1/9zgeGjeu0fDbPhMEgwQruT3vGUnsRTw+LUmMO/UdCqI1uATCHHhky67yTvI9SR9H4OGtxmx46Z1FoPL9IFevs9CwjtzmTxXAZ2AN2JpSZQYVJS6MyASosNFC0j8JITGdW03U55D1wqHPpd73mjdKnm0rn9yQ5Dniy/exEunpEJOQhjkFUh+G1DQrbMudyBcjWt/8u9+b06izL2ZJGfW7re/Isati5rYvl09Dj6pWcc12O7BXreMZ5SJeR28LKcnN/exskIEBtnabRL6CS6xHawRROdNcbcith5TR9IqzuEbjLlJvOjLgDoJqDmYoIz0nhem5ADuP/6Jx3gcnMhsuwHeiS5CPsGog4wGKr0EtqohsOHY3Gk29UfBepcwK4hgT/J5C0B6mFxvX0=
+    secure: FLjIsMzFhnHSHKJ3VjxPorQ6tYY+Lyj1EgsAEAaOqRDahiMqNR++4lIEZCVYJM53APrqdq9pUTxHRWUJNRcjzgRes959HPMHRQXZ7Tr+COS6tREjtEmX01jZxU+jHPGunRWuININzFOjAGYln3XnwDriC1ZkbCphBJ3cD6HnMvIS0KQrKOuQ5mc+l9Hzc6JRGc5VH///TjxshXJlSqmytYuAvWDL7HSXVr3S9ozcas4e7L/UOZo1JnGGrgRAkK4rb4ivqoyf+jCPOPkzmg79zEpe3vGnMSXIA7tbfB+OusQ9F77FtLa5NDjYZCvu9PHfzranqwPqJc/NlNigGHcBfCKeCvkn5bxrkFTv7KVZV+efGbfnCsDr83RCEgtHdKmMyd6Is70iQ+zLDd0WohNsIKb7dkWynvvm6UD7K1jFjc1e+80znMgkE2gYJIYA9nRL850+RZydM9sJyDtQHfGkigZRK6qy82p/qctvHcV6rxfL38URW8mfLpYzPl4w41Fq7ElXg/NsKIYdPd2iX7xtQCoKzQVUA3t9HmlG5+7oBtUqwrNXq/o+ra4TI3X8rk+vKNSPnv91XG/GadK/PWmJjvKqAxAqei0pgOzCViU1WO37W74UR5C9YZXGoyqsDH3fX4HTykhceLhhCkRBBun8gDlIW60ad6IBTDCE0NUC14E=
 script:
 - nvm install 14
 - bundle exec rails db:migrate
