@@ -7,7 +7,7 @@ Based on discontinued course material from 2018 provided by Helsinki University,
 
 [Course material repository](https://github.com/mluukkai/WebPalvelinohjelmointi2018) (in Finnish)
 
-Application found at https://afternoon-garden-82317.herokuapp.com/. Hosted using [free Heroku dyno hours](https://devcenter.heroku.com/articles/free-dyno-hours) so accessing the app can take a moment while the dyno starts.
+Application used to be hosted on Heroku free dynos under a generated app name `afternoon-garden-82317`. Currently not hosted anywhere.
 
 ### Cheat sheet (for the forgetful...)
 
